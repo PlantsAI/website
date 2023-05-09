@@ -1,6 +1,6 @@
 # PlantsAI.ir
 
-
+[![Python application](https://github.com/PlantsAI/website/actions/workflows/python-app.yml/badge.svg)](https://github.com/PlantsAI/website/actions/workflows/python-app.yml)
 
 ## Run
 
