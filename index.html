@@ -57,18 +57,17 @@
 </head>
 
 <body>
-
-    <!-- <div id="overlay"></div> -->
-    <video autoplay muted loop id="myVideo">
-        <source src="static/images/background.mp4" type="video/mp4">
-    </video>
+    <img src="static/images/background.jpg" alt="Plants AI" id="background">
     <div class="content">
+        <img src="static/images/apple-touch-icon.png" alt="Plants AI" id="logo">
+
         <form action="/target" class="dropzone" id="my-great-dropzone"></form>
 
         <script>
         Dropzone.options.myGreatDropzone = { // camelized version of the `id`
             paramName: "file", // The name that will be used to transfer the file
             maxFilesize: 2, // MB
+            dictDefaultMessage: "Drag image here or click to upload",
             accept: function(file, done) {
             if (file.name == "justinbieber.jpg") {
                 done("Naha, you don't.");

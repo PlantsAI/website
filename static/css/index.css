@@ -57,13 +57,16 @@ body {
     }
 }
 
-#myVideo {
+#background {
     position: fixed;
     right: 0;
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
     z-index: -1;
+    /* -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
 }
 
 /**********\
@@ -77,3 +80,31 @@ body {
 
 .popover-title { display: none; }
 .popover-content { padding-top: 1em; white-space: nowrap;}
+
+#my-great-dropzone {
+    border: 2px dashed #0e5814;
+    border-radius: 10px;
+    background: white;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.5em;
+    color: #0e5814;
+    cursor: pointer;
+}
+
+#my-great-dropzone:hover {
+    background: #0e5814;
+    color: white;
+}
+
+#logo {
+    /* top left icon */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+}
