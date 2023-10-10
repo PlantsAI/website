@@ -1,85 +1,28 @@
-::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+@font-face {
+    font-family: product-sans;
+    src: url("../fonts/product-sans/Product Sans Regular.ttf");
 }
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #ffffff;
-}
-
-/*********\
-* CONTENT *
-\*********/
 
 body {
-    margin: 0;
-    padding: 0;
+    height: 100vh;
+    font-family: product-sans;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #000;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
 }
-  
-.comingsoon {
-    position: relative;
-    text-transform: uppercase;
-    font-size: 5em;
-    letter-spacing: 4px;
-    overflow: hidden;
-    background: linear-gradient(90deg, #444, #fff, #444);
-    background-repeat: no-repeat;
-    background-size: 80%;
-    animation: animate 3s linear infinite;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0);
-    z-index: 2;
-}
-  
-#overlay {
+
+#logo {
     position: fixed;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5); 
-    z-index: 1;
+    padding: 1em;
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
 }
-
-@keyframes animate {
-    0% {
-        background-position: -500%;
-    }
-    100% {
-        background-position: 500%;
-    }
-}
-
-#background {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: -1;
-    /* -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1); */
-}
-
-/**********\
-* METADATA *
-\**********/
-
-
-/*******\
-* ICONS *
-\*******/
-
-.popover-title { display: none; }
-.popover-content { padding-top: 1em; white-space: nowrap;}
 
 #my-great-dropzone {
     border: 2px dashed #0e5814;
@@ -97,77 +40,11 @@ body {
     color: white;
 }
 
-#logo {
-    /* top left icon */
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 1em;
-    z-index: 2;
-    width: 100px;
-    height: 100px;
-    border-radius: 30px;
-}
-
-@font-face {
-    font-family: product-sans;
-    src: url("../fonts/product-sans/Product Sans Regular.ttf");
-}
-
-body {
-    height: 100%;
-    font-family: product-sans;
-    /* overflow: hidden; */
-}
-
-::-webkit-scrollbar {
-    width: 0;
-    /* Remove scrollbar space */
-    background: transparent;
-    /* Optional: just make scrollbar invisible */
-}
-
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
-
-.card-img-overlay {
-    background: linear-gradient(to top, transparent 0%, black 150%);
-}
-
-.hover {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-
-.hover:hover {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-}
-
-.post-body {
-    text-align: justify;
-    text-justify: inter-word;
-}
-
-nav{
-    position: absolute;
-    top: 45px !important;
-    right: 0px !important;
-}
-nav a{
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;
-    background-color: #f5f5f5;
+    background-color: rgb(112, 117, 122);
 }
