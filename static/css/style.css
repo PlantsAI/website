@@ -57,6 +57,7 @@ body {
     padding: 1em;
     text-align: center;
     font-size: 1.5em;
+    color: #1b5e20;
     background: linear-gradient(to right, #4caf50, #1b5e20);
     background-clip: text;
     -webkit-background-clip: text;
