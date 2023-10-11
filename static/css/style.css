@@ -59,6 +59,9 @@ body {
     font-size: 1.5em;
     color: #1b5e20;
     background: linear-gradient(to right, #4caf50, #1b5e20);
+    background: -webkit-gradient(linear, to right, #4caf50, #1b5e20);
+    background: -moz-gradient(linear, to right, #4caf50, #1b5e20);
+    background: -o-gradient(linear, to right, #4caf50, #1b5e20);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
