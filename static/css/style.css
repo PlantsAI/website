@@ -35,10 +35,13 @@ body {
     }
 }
 
+.content {
+    position: relative;
+    z-index: 2;
+}
 
 #logo {
     position: relative;
-    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +50,6 @@ body {
 
 #logo img {
     position: relative;
-    z-index: 2;
     width: 100px;
 }
 
