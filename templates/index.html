@@ -1,0 +1,36 @@
+{% extends 'template.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+<div class="content">
+    <div id="logo">
+        <img src="static/images/plantsai-logo-with-text.png" alt="Plants AI">
+    </div>
+    <form action="#" class="dropzone" id="my-great-dropzone"></form>
+</div>
+
+<script>
+    Dropzone.options.myGreatDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 2, // MB
+        dictDefaultMessage: "Drag image here or click to upload",
+        accept: function (file, done) {
+            if (file.name == "justinbieber.jpg") {
+                done("Naha, you don't.");
+            }
+            else { done(); }
+        }
+    };
+</script>
+
+{% endblock %}
