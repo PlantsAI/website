@@ -16,7 +16,7 @@
     <div id="logo">
         <img src="static/images/plantsai-logo-with-text.png" alt="Plants AI">
     </div>
-    <form action="#" class="dropzone" id="my-great-dropzone"></form>
+    <form action="/predict" class="dropzone" id="my-great-dropzone"></form>
 </div>
 
 <script>
@@ -24,11 +24,19 @@
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 2, // MB
         dictDefaultMessage: "Drag image here or click to upload",
+        // REDIRECT VIEW completed
+        
         accept: function (file, done) {
             if (file.name == "justinbieber.jpg") {
                 done("Naha, you don't.");
             }
-            else { done(); }
+            else { 
+                done();
+                // window.location.replace("/result");
+            }
+        },
+        success: function(file, response) {
+            console.log(response);
         }
     };
 </script>

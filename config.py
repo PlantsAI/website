@@ -1,4 +1,4 @@
 import os
 
 
-upload_folder = "./static/"
+upload_folder = "./static/uploads"

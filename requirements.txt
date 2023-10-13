@@ -1,1 +1,3 @@
 flask
+onnxruntime
+opencv-python
