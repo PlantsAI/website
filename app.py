@@ -2,7 +2,9 @@ import os
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask import Flask, render_template, request, redirect, flash, url_for
+from ultralytics import YOLO
 import config
+
 
 UPLOAD_FOLDER = '/path/to/the/uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -10,6 +12,7 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = config.upload_folder
+model = YOLO(config.weights, task='classify')
 
 
 @app.route("/")
@@ -37,9 +40,20 @@ def predict():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # print("glasses")
-            return "glasses"
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            
+            # Predict with the model
+            results = model(source=file_path, imgsz=[config.image_size, config.image_size])  # predict on an image
+            
+            class_names = []
+            for result in results:
+                print(result.probs.top1)
+                class_name = result.names[result.probs.top1]
+                print(class_name)
+                class_names.append(class_name)
+
+            return class_names
             # return redirect(url_for('result'))
 
 

@@ -53,7 +53,7 @@ body {
     width: 100px;
 }
 
-.my-dropzone {
+#my-great-dropzone {
     border: 2px dashed #000;
     border-radius: 2.5rem;
     padding: 1em;
