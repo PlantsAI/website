@@ -1,3 +1,4 @@
 flask
 onnxruntime
+ultralytics
 opencv-python
