@@ -1,8 +1,9 @@
 import os
+import json
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask import Flask, render_template, request, redirect, flash, url_for
-from ultralytics import YOLO
+from plantsai import PlantsAI
 import config
 
 
@@ -12,7 +13,7 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = config.upload_folder
-model = YOLO(config.weights, task='classify')
+model = PlantsAI(weights_path=config.weights_path, thread=config.thread, image_size=config.image_size)
 
 
 @app.route("/")
@@ -43,17 +44,13 @@ def predict():
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
             
-            # Predict with the model
-            results = model(source=file_path, imgsz=[config.image_size, config.image_size])  # predict on an image
-            
-            class_names = []
-            for result in results:
-                print(result.probs.top1)
-                class_name = result.names[result.probs.top1]
-                print(class_name)
-                class_names.append(class_name)
-
-            return class_names
+            result = model(file_path)  # predict on an image
+            class_name = config.classes_names[result]
+            print(result)
+            return json.dumps({
+                'class_name': class_name,
+                'class_id': result
+            }, default=str)
             # return redirect(url_for('result'))
 
 
