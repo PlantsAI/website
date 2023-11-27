@@ -1,5 +1,8 @@
 import os
 import json
+from io import BytesIO
+import numpy as np
+from PIL import Image
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask import Flask, render_template, request, redirect, flash, url_for
@@ -40,11 +43,9 @@ def predict():
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(file_path)
-            
-            result = model(file_path)  # predict on an image
+            image_stream = BytesIO(file.read())
+            image = np.array(Image.open(image_stream))
+            result = model(image)  # predict on an image
             class_name = config.classes_names[result]
             print(result)
             return json.dumps({

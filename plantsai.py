@@ -33,8 +33,7 @@ class PlantsAI:
         result = np.argmax(output)
         return result
         
-    def __call__(self, image_path):
-        image = cv2.imread(image_path)
+    def __call__(self, image):
         image = self.preprocess(image)
         output = self.process(image)
         result = self.postprocess(output)
@@ -43,7 +42,8 @@ class PlantsAI:
 
 def main():
     model = PlantsAI()
-    result = model("static/uploads/test.jpg")
+    image = cv2.imread("static/uploads/test.jpg")
+    result = model(image)
     print(result)
 
 
