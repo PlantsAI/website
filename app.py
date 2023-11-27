@@ -1,17 +1,15 @@
-import os
 import json
 from io import BytesIO
 import numpy as np
 from PIL import Image
 from datetime import datetime
-from werkzeug.utils import secure_filename
 from flask import Flask, render_template, request, redirect, flash, url_for
 from plantsai import PlantsAI
 import config
 
 
 UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'bmp', 'png', 'jpg', 'jpeg'}
 
 
 app = Flask(__name__)
@@ -37,22 +35,22 @@ def predict():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
+        # If the user does not select a file, 
+        # the browser submits an empty file without a filename.
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
-        if file and allowed_file(file.filename):
-            image_stream = BytesIO(file.read())
-            image = np.array(Image.open(image_stream))
-            result = model(image)  # predict on an image
-            class_name = config.classes_names[result]
-            print(result)
-            return json.dumps({
-                'class_name': class_name,
-                'class_id': result
-            }, default=str)
-            # return redirect(url_for('result'))
+
+        if not allowed_file(file.filename):
+            flash('Invalid file extension')
+            return redirect(request.url)
+
+        image_stream = BytesIO(file.read())
+        image = np.array(Image.open(image_stream))
+        result = model(image)  # predict on an image
+        class_name = config.classes_names[result]
+        return json.dumps({'class_name': class_name, 'class_id': result}, default=str)
+        # return redirect(url_for('result'))
 
 
 @app.route("/result")
