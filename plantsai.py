@@ -13,7 +13,7 @@ class PlantsAI:
         opts.intra_op_num_threads = thread
         opts.inter_op_num_threads = thread
         opts.execution_mode = onnxruntime.ExecutionMode.ORT_SEQUENTIAL
-        session = onnxruntime.InferenceSession(weights_path, opts, providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
+        session = onnxruntime.InferenceSession(weights_path, opts, providers=['CPUExecutionProvider'])
         input_name = session.get_inputs()[0].name
         output_name = session.get_outputs()[0].name
         return session, input_name, output_name
