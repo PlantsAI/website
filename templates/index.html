@@ -14,7 +14,7 @@
 
 <div class="content">
     <div id="logo">
-        <img src="static/images/plantsai-logo-with-text.png" alt="Plants AI">
+        <img src="{{url_for('static', filename='images/plantsai-logo-with-text.png')}}" alt="Plants AI">
     </div>
     <form action="/predict" class="dropzone" id="my-great-dropzone"></form>
 </div>
@@ -32,11 +32,11 @@
             }
             else { 
                 done();
-                // window.location.replace("/result");
             }
         },
         success: function(file, response) {
-            console.log(response);
+            var result = JSON.parse(response);
+            window.location.href = '/result/' + result.class_id;
         }
     };
 </script>

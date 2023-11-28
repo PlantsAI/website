@@ -3,7 +3,7 @@ from io import BytesIO
 import numpy as np
 from PIL import Image
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, flash, url_for
+from flask import Flask, render_template, request, redirect, flash
 from plantsai import PlantsAI
 import config
 
@@ -50,12 +50,11 @@ def predict():
         result = model(image)  # predict on an image
         class_name = config.classes_names[result]
         return json.dumps({'class_name': class_name, 'class_id': result}, default=str)
-        # return redirect(url_for('result'))
 
 
-@app.route("/result")
-def result():
-    return render_template('result.html')
+@app.route("/result/<id>")
+def result(id):
+    return render_template('result.html', id=id)
 
 
 @app.context_processor

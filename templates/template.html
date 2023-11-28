@@ -23,18 +23,18 @@
     <meta property="og:site_name" content="Plants AI" />
     <meta property="og:description"
         content="A powerful plant identifier to identify flowers, leaves, trees, and more in seconds!" />
-    <meta property="og:image" content="static/images/avatar.jpg" />
+    <meta property="og:image" content="{{url_for('static', filename='images/avatar.jpg')}}" />
 
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="static/images/avatar.jpg'">
+    <meta name="msapplication-TileImage" content="{{url_for('static', filename='images/avatar.jpg')}}">
     <meta name="theme-color" content="#1d442c">
     <meta name="msapplication-navbutton-color" content="#1d442c">
     <meta name="apple-mobile-web-app-status-bar-style" content="#1d442c">
 
-    <link rel="apple-touch-icon" type="image/png" href="static/images/apple-touch-icon.png'">
+    <link rel="apple-touch-icon" type="image/png" href="{{url_for('static', filename='images/apple-touch-icon.png')}}">
     <link rel="icon" href="static/images/favicon.ico" />
-    <link rel="shortcut icon" type="image/png" href="static/images/avatar.jpg" />
-    <link rel='shortcut icon' type='image/x-icon' href="static/images/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='images/avatar.jpg')}}" />
+    <link rel='shortcut icon' type='image/x-icon' href="{{url_for('static', filename='images/favicon.ico')}}">
 
     <meta name="DC.Creator" content="Plants AI">
     <meta name="DC.Publisher" content="Plants AI">
@@ -49,13 +49,13 @@
     {% block scripts %} {% endblock %}
     {% block styles %} {% endblock %}
 
-    <link rel="stylesheet" type="text/css" href="static/css/all.css">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/all.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 
 <body>
-    <img src="static/images/leafs-up.png" id="leafs-up">
-    <img src="static/images/leafs-down.png" id="leafs-down">
+    <img src="{{url_for('static', filename='images/leafs-up.png')}}" id="leafs-up">
+    <img src="{{url_for('static', filename='images/leafs-down.png')}}" id="leafs-down">
 
     {% include "header.html" %}
     
@@ -73,7 +73,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script> -->
 
-    <script type="text/javascript" src="static/js/script.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
 
 </html>
