@@ -3,8 +3,7 @@ from io import BytesIO
 import numpy as np
 from PIL import Image
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, flash, url_for
-from werkzeug.utils import secure_filename
+from flask import render_template, request, redirect, flash, url_for
 from plantsai_app import config
 from plantsai_app.models.plant import Plant, AddForm, DelForm
 from plantsai_app import app, db, model
@@ -43,7 +42,8 @@ def predict():
 
 @app.route("/result/<id>")
 def result(id):
-    return render_template('result.html', id=id)
+    plant = Plant.query.get(id)
+    return render_template('result.html', plant=plant)
 
 
 @app.context_processor
@@ -53,7 +53,7 @@ def inject_now():
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('page_not_found.html'), 404
+    return render_template('404.html'), 404
 
 
 @app.route('/add', methods=['GET', 'POST'])

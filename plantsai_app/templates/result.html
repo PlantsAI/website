@@ -4,16 +4,48 @@
 
 {% block content %}
 
-<div class="content">
-    <div class="container">
-        <div class="row">
-            <h1>result</h1>
-            <div class="col-md-6">
-                <img src="">
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    result page {{ id }}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card rounded-4 glass">
+                <div class="card-header">
+                    AI Result
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='uploads/test.jpeg')}}" class="img-fluid rounded-4">
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="card-title">{{ plant.name }}</h3>
+                            <p class="card-text">
+                                The pothos plant is considered by many to be a great way to get started caring for
+                                houseplants. Since pothos care is easy and undemanding, this lovely plant is an easy way
+                                to add some green to your home.
+                            </p>
+                            <h5>💧 Watering</h5>
+                            <p class="card-text">
+                                More than a few plant owners confuse low care with no care, so take note that pothos has
+                                a few absolute rules. For one, it requires water and grows best during spring and summer
+                                when the soil is kept consistently moist. Take the drainage requirement to heart though,
+                                since a pothos sitting in soggy soil is not a happy plant.
+                            </p>
+                            <h5>☀️ Light</h5>
+                            <p class="card-text">
+                                Pothos plants make a great addition to your bathroom or office because they can tolerate
+                                low light. While pothos likes a wide variety of light conditions, they do not do well in
+                                direct sunlight.
+                            </p>
+                            <h5>🪴 Soil</h5>
+                            <p class="card-text">
+                                Some plants are picky about soil, but pothos is not one of them. Pothos plants grow
+                                perfectly well in ordinary soil as long as it drains well. That means that loamy or
+                                sandy soil will work, while clay will not. If the soil is constantly saturated, pothos will
+                                die.
+                            </p>
+                            <a href="#" class="btn btn-success">Start Again</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
