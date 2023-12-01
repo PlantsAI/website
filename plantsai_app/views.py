@@ -3,28 +3,17 @@ from io import BytesIO
 import numpy as np
 from PIL import Image
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, flash
-from plantsai import PlantsAI
-import config
-
-
-UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = {'bmp', 'png', 'jpg', 'jpeg'}
-
-
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = config.upload_folder
-model = PlantsAI(weights_path=config.weights_path, thread=config.thread, image_size=config.image_size)
+from flask import Flask, render_template, request, redirect, flash, url_for
+from werkzeug.utils import secure_filename
+from plantsai_app import config
+from plantsai_app.models.plant import Plant, AddForm, DelForm
+from plantsai_app import app, db, model
+from plantsai_app.utils.functions import allowed_file
 
 
 @app.route("/")
 def root():
     return render_template('index.html')
-
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route("/predict", methods=['POST'])
@@ -67,5 +56,20 @@ def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
 
-if __name__ == '__main__':
-    app.run(host='localhost')
+@app.route('/add', methods=['GET', 'POST'])
+def add_pup():
+    form = AddForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        water = form.water.data
+        new_plant = Plant(name, water)
+        db.session.add(new_plant)
+        db.session.commit()
+        return redirect(url_for('list_pup'))
+    return render_template('add.html', form=form)
+
+
+@app.route('/list')
+def list_pup():
+    plants = Plant.query.all()
+    return render_template('list.html', plants=plants)

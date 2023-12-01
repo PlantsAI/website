@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<form method="POST" action="/add">
+    {{ form.csrf_token }}
+    {{ form.name.label }} {{ form.name(size=20) }}
+    {{ form.water.label }} {{ form.water(size=20) }}
+    <input type="submit" value="Go">
+</form>
+
+{% endblock %}

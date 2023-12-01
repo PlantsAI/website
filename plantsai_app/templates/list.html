@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<ul>
+    <li><a href="/add">Add a plant</a></li>
+{% for plant in plants %}
+    <li>{{ plant.name }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
