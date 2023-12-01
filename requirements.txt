@@ -6,3 +6,4 @@ opencv-python
 flask-sqlalchemy
 flask-migrate
 flask-login
+psycopg2
