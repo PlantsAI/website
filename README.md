@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 Then just execute command bellow:
 ```
-flask --app plantsai_app run
+flask --app run:app run
 ```
 
 ## TODO

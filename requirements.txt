@@ -6,4 +6,5 @@ opencv-python
 flask-sqlalchemy
 flask-migrate
 flask-login
-psycopg2
+flask-wtf
+psycopg2-binary
