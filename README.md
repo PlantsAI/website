@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 Then just execute command bellow:
 ```
-flask --app run:app run
+flask run
 ```
 
 ## TODO
