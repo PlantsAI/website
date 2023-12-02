@@ -7,7 +7,7 @@ import plantsai_app.config as config
 from plantsai_app.utils.plantsai import PlantsAI
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/plantsai_app/static/')
 app.config['UPLOAD_FOLDER'] = config.upload_folder
 app.config['SQLALCHEMY_DATABASE_URI'] = config.database_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -17,6 +17,5 @@ SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
 model = PlantsAI(weights_path=config.weights_path, thread=config.thread, image_size=config.image_size)
-
 
 import plantsai_app.views
