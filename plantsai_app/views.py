@@ -3,7 +3,7 @@ from io import BytesIO
 import numpy as np
 from PIL import Image
 from datetime import datetime
-from flask import render_template, request, redirect, flash, url_for
+from flask import render_template, request, redirect, flash, url_for, send_from_directory
 from plantsai_app import config
 from plantsai_app.models.plant import Plant, AddForm, DelForm
 from plantsai_app import app, db, model
@@ -73,3 +73,9 @@ def add_pup():
 def list_pup():
     plants = Plant.query.all()
     return render_template('list.html', plants=plants)
+
+
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
