@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width:200px;
+            height:200px;
+            margin:20px;
+            outline:2px solid;
+            outline-offset:10px;
+            position:relative;
+          }
+          .box::before {
+            content:"";
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            width:20px;
+            background:#18c89b;
+            box-shadow:0 0 70px 20px #18c89b;
+            clip-path:inset(0);
+            animation:
+              x 0.5s ease-in-out infinite alternate,
+              y 1s   ease-in-out infinite;
+          }
+          
+          @keyframes x {
+            to {
+              transform:translateX(-100%);
+              left:100%;
+            }
+          }
+          
+          @keyframes y {
+             33% {
+               clip-path:inset(0 0 0 -100px);    
+             }
+             50% {
+               clip-path:inset(0 0 0 0);    
+             }
+             83%{
+               clip-path:inset(0 -100px 0 0); 
+             }
+          }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>
